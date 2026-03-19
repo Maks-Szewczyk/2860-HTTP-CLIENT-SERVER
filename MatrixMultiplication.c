@@ -27,6 +27,11 @@
 //
 // Main.
 //
+typedef struct {
+    int row;
+    int N;
+} args_t;
+
 int main( int argc, char **argv )
 {
     //
@@ -80,10 +85,12 @@ int main( int argc, char **argv )
     {
         v[row] = 0.0f;             // Make sure the right-hand side vector is initially zero.
         //create thread
+        pthread_create ( & thread_id , args_t , rowOp , NULL );
         //args: (row, N)
 
-        for( int col=0; col<N; col++ )
-            v[row] += M[row][col] * u[col];
+
+        //for( int col=0; col<N; col++ )
+        //v[row] += M[row][col] * u[col];
 
     }
     // join
@@ -102,3 +109,11 @@ int main( int argc, char **argv )
 
     return EXIT_SUCCESS;
 }
+
+void* rowOp(void* vargp) {
+    args_t *args = (args_t*) vargp;
+    for( int col=0; col<N; col++ ) {
+        v[row] += M[row][col] * u[col];
+    }   
+}
+
