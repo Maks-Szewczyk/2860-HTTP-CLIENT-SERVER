@@ -1,4 +1,6 @@
 dig @198.41.0.4 www.harvard.edu +norecurse
 dig @192.31.80.30 www.harvard.edu +norecurse
 dig @23.61.199.65 www.harvard.edu +norecurse
-
+dig @198.41.0.4 harvard-edu.go-vip.net +norecurse
+dig @192.55.83.30 harvard-edu.go-vip.net +norecurse
+dig @198.181.116.7 harvard-edu.go-vip.net +norecurse
